@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- HOW TO EDIT: search for "todo". Yellow text sits inside <mark class="todo">...</mark>. When done, delete the <mark> tags (or set --mk:transparent in the CSS). Each project is a <main class="panel" id="..."> block; tabs are the buttons in <nav class="tabs">. Media lives in images/ (swap a file by keeping the same name). -->
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kai's portfolio</title>
+<style>
+:root{--bg:#f1f3ef;--fg:#18222c;--mute:#55616d;--line:#c9d0cc;--acc:#25559e;--mk:#ffe45c;--mkfg:#18222c;--card:#e8ece8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13181d;--fg:#e4e9ed;--mute:#9aa7b3;--line:#2c353d;--acc:#86adec;--card:#1b2229}}
+:root[data-theme="dark"]{--bg:#13181d;--fg:#e4e9ed;--mute:#9aa7b3;--line:#2c353d;--acc:#86adec;--card:#1b2229}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+h1,h2{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);margin:.2em 0 .15em}h2{font-size:1.7rem;margin:0 0 .5em}
+header.top{padding:18px 0;border-bottom:1px solid var(--line);color:var(--mute);font-size:.95rem}
+.hero p.lead{font-size:1.25rem;max-width:34em;margin:0 0 1.4em}
+.hero img,.hero video,figure video{width:100%;height:auto;border-radius:4px;display:block}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;margin:28px 0 8px;border-top:2px solid var(--fg)}
+.facts div{padding:12px 16px 12px 0}.facts dt{font-weight:700;font-size:.9rem;color:var(--mute)}.facts dd{margin:2px 0 0}
+section{padding:46px 0 10px;border-top:1px solid var(--line);margin-top:36px}
+p{max-width:40em}
+figure{margin:22px 0}figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:3px;background:#fff}
+figcaption{font-size:.9rem;color:var(--mute);margin-top:6px;max-width:44em}
+.pair{align-items:start;display:grid;grid-template-columns:1fr 1.14fr;gap:16px}
+@media(max-width:620px){.pair{grid-template-columns:1fr}}
+.small{max-width:min(46%,420px)}@media(max-width:620px){.small{max-width:100%}}
+.pair img{aspect-ratio:4/3;object-fit:cover}
+.scroll{overflow-x:auto}.scroll img{min-width:760px}
+.todo{background:var(--mk);color:var(--mkfg);padding:0 3px;border-radius:2px}
+.slot{border:2px dashed var(--line);background:var(--card);padding:40px 20px;text-align:center;border-radius:3px;color:var(--mute)}
+a{color:var(--acc)}footer{padding:40px 0 60px;color:var(--mute);border-top:1px solid var(--line);margin-top:50px}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:8px;padding:12px 0;background:var(--bg);border-bottom:2px solid var(--fg)}
+.tabs button{flex:1 1 0;min-height:52px;padding:8px 10px;font:700 1rem/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg);background:var(--card);border:2px solid var(--fg);border-radius:4px;cursor:pointer}
+.tabs button:hover{background:var(--line)}
+.tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg)}
+.tabs button:focus-visible,.next:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.js .panel[hidden]{display:none}
+.nextwrap{margin:48px 0 0;max-width:none}.next{font:700 1rem system-ui,sans-serif;color:var(--fg);background:var(--card);border:2px solid var(--fg);border-radius:4px;padding:12px 18px;cursor:pointer}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}@media(max-width:620px){.three{grid-template-columns:1fr}}.three img{background:#fff}
+.two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:22px;align-items:start}@media(max-width:700px){.two{grid-template-columns:1fr}}
+.role{max-width:40em;padding-left:1.2em}.role li{margin:.35em 0}
+#ftc h1,#frc h1{font-size:clamp(2.2rem,6vw,3.4rem)}#ftc section,#frc section{padding-top:30px;margin-top:26px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+.split{display:grid;grid-template-columns:1fr 1.61fr;gap:16px;align-items:start;margin:18px 0 0}.split figure{margin:0}.split.single{grid-template-columns:1fr}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}.grid4 img{aspect-ratio:4/3;object-fit:cover;object-position:center bottom}.grid4 img.cad{object-fit:contain;background:#fff}
+.vid video{max-width:100%}
+@media(max-width:620px){.split,.grid4{grid-template-columns:1fr}}
+.two.v2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media(max-width:700px){.two.v2{grid-template-columns:1fr}}
+#frc section img{height:auto}
+.two.cv{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media(max-width:700px){.two.cv{grid-template-columns:1fr}}
+.term{background:#16191d;color:#dfe6ee;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:14px 16px;border-radius:4px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cap{font-size:.9rem;color:var(--mute);margin-top:8px}
+.avid{display:grid;grid-template-columns:1.74fr 1fr;gap:16px;align-items:start}.avid figure{margin:0}@media(max-width:620px){.avid{grid-template-columns:1fr}}
+.cosvid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:start}@media(max-width:700px){.cosvid{grid-template-columns:1fr}.cosvid video{max-width:260px}}
+.two.so{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}@media(max-width:700px){.two.so{grid-template-columns:1fr}}
+@media(max-width:480px){.tabs button{font-size:.88rem;padding:6px 4px}}
+.links{list-style:none;padding:0;margin:0 0 6px}.links a{display:block;padding:12px 16px;margin:0 0 10px;border:2px solid var(--fg);border-radius:4px;color:var(--fg);background:var(--card);text-decoration:none;font-weight:700}.links a:hover{background:var(--line)}.links a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.pair.wide img{aspect-ratio:3/2}
+</style></head><body>
+<div class="wrap">
+<header class="top">Kai · Mechanical Engineering w. specialization in Robotics &amp; Control Systems, UC San Diego Regents Scholar</header>
+<nav class="tabs" role="tablist" aria-label="Projects"><button type="button" role="tab" id="t-chess" aria-controls="chess" data-tab="chess" aria-selected="true">Chess robot</button><button type="button" role="tab" id="t-ftc" aria-controls="ftc" data-tab="ftc" aria-selected="false">FTC robot</button><button type="button" role="tab" id="t-frc" aria-controls="frc" data-tab="frc" aria-selected="false">FRC robot</button><button type="button" role="tab" id="t-more" aria-controls="more" data-tab="more" aria-selected="false">COSMOS &amp; more</button></nav>
+<main class="panel" id="chess" role="tabpanel" aria-labelledby="t-chess"><div class="hero" style="padding-top:36px">
+<h1>Chess robot</h1>
+<p class="lead">A SCARA-style arm that moves chess pieces on a physical board, with a camera that reads the board from underneath so a player's hand never blocks the view.</p>
+<!-- HERO LAYOUT: photo + video side by side. For one big video instead, delete the first <figure> below, change class "split" to "split single", and use poster="images/hero.jpg" on the video. -->
+<div class="split"><figure><img src="images/hero.jpg" alt="The robot arm"><figcaption>The finished arm and board. Currently shown in test state with yellow and red pieces for cv testing.</figcaption></figure>
+<figure><video controls playsinline preload="metadata" poster="images/demo-poster.jpg"><source src="images/demo.mp4" type="video/mp4"></video><figcaption>The robot moving a piece. </figcaption></figure></div>
+<dl class="facts">
+<div><dt>Team</dt><dd>2 people. I worked mainly on the arm, board and motor control; my partner built the pieces, vision, move tracking and decision making. Often overlap and help in efforts. </dd></div>
+<div><dt>Timeline</dt><dd> October 2025 - Present. Main structure and mechanical finalization July 2026</dd></div>
+<div><dt>Tools</dt><dd>CAD software: Fusion 360, 3D printer, laser cutter, raspberry pi architecture, stepper motor drivers, electromagnet, small scale fabrication devices: band saw, drills, etc</dd></div>
+<div><dt>Outcome</dt><dd>Nearing full game capabilites. Confirmed movement of pieces, full working elecrronics. Implimented game algorithm to match opponent level of skill. Working on honing cv pipeline, calibrating board positions &amp; arm movement, as well as fully integrating all parts into full playability. </dd></div>
+</dl></div>
+
+<section><h2>Choosing the design</h2>
+<p>Before building, I scored the options for three decisions: the pickup claw, the overall layout, and the arm. The highest total won each time.</p>
+<figure class="scroll"><img src="images/matrix.png" alt="Three decision matrices comparing claws, overall layouts, and arm types"><figcaption>Custom decision matrices for each category. </figcaption></figure>
+<p><b>Layout.</b> Putting the camera under the board scored 5 on human occlusion risk and 5 on calibration stability, against 3 and 2 for the side robot. It lost points on human accessibility (3, versus 6 for the side robot). I accepted that trade for reliable vision.</p>
+<p><b>Arm.</b> A linear gantry beat SCARA on accuracy (10 vs 8), but scored 3 on impact on the human player against 9 for SCARA. SCARA won overall, 40 to 38.</p>
+<p><b>Claw.</b> The score was close, but waranted testing for viability. After testing it became the confirmed choice. </p>
+<div class="pair">
+<figure><img src="images/scara.jpg" alt="Notebook sketch of a SCARA-type arm with dimensions"><figcaption> SCARA arm concept Drawing with estimated dimensions and joint layout.</figcaption></figure>
+<figure><img src="images/boardc.jpg" alt="Notebook sketch of the camera-under-board concept with isometric and side views"><figcaption> camera-under-board concept drawing</figcaption></figure></div></section>
+
+<section><h2>Early prototyping and testing</h2>
+<p> The box with the board is mainly made out of wood. The top layer was made through laser cut and engraved wood with a acrylic layer under for the camera to see thorugh. This box houses also houses all electronics. The mechanical arm was origanlly modeled in CAD before assembling. Throughout the process test pieces, and fits were tested to match the board. </p>
+<div class="grid4">
+<figure><img src="images/magnet.jpg" alt="Electromagnet held above a white chess piece, with the relay and ribbon cable wiring"><figcaption>Electromagnet bench test with the relay. Checked toleraneces and power needed to hold pieces. Also tried various metal options to indent into chess pieces. </figcaption></figure>
+<figure><img src="images/fit.jpg" alt="A white pawn sitting in one of the board's holes"><figcaption> Checking and adjusting piece design to optimize hole to board clearance. </figcaption></figure>
+<figure><img src="images/frame.jpg" alt="Wooden table frame with a perforated top"><figcaption>First board frame assembled.</figcaption></figure>
+<figure><img class="cad" src="images/arm-cad.png" alt="CAD model of the full arm with gears, column and base"><figcaption>Preliminary CAD of the full arm with the gear drive.</figcaption></figure></div></section>
+
+<section><h2>The arm: from gears to belts</h2>
+<p> Along with various strength and tolerance readjustments the major change occured due to the use of gears in the original design. They were too imprecise; the motor position varied by about 2 degrees of motion and there was no identical zero position, which made calibration hard. By switching from gear to belts with proper tensioning systems, the error variabily dropped to nearly zero. </p>
+<div class="pair">
+<figure><img src="images/old.jpg" alt="Close-up of the gear-driven arm with metal channel, gears and 3D printed housing"><figcaption>First version: the gear-driven arm.</figcaption></figure>
+<figure><img src="images/belt.jpg" alt="CAD of the belt pulley with timing-belt teeth around the rim"><figcaption> Belt pulley for the rebuilt joint (CAD) using GT2 timing belts. </figcaption></figure></div></section>
+
+<section><h2>Computer vision</h2>
+<p> The raspberry pi used the camera under the board tracks the state of each piece on the board. By identifying the colored bases of the pieces, it can track each move played from starting position. There was no need to differently color each piece. </p>
+<div class="two cv">
+<figure style="margin:0"><img src="images/cv-board.jpg" alt="Live camera view of the board from underneath, with each detected piece circled and labeled with its square and color"><figcaption>Live detection: each piece found is circled and labeled with its square and color</figcaption></figure>
+<div><div class="term" role="img" aria-label="Terminal output listing the squares occupied by red pieces and by yellow pieces">$ python cvtesting.py
+
+RED PIECES ON:
+['F6', 'E3', 'F3', 'G3', 'A2', 'B2', 'C2', 'D2', 'E2', 'F2', 'G2', 'H2', 'A1', 'B1', 'E1', 'H1']
+
+YELLOW PIECES ON:
+['B8', 'C8', 'D8', 'E8', 'F8', 'G8', 'H8', 'A7', 'B7', 'D7', 'E7', 'F7', 'G7', 'H7', 'A6']</div>
+<p class="cap">The program's output for the same board: 16 red and 15 yellow squares, matching the labels in the image.</p></div></div>
+<p>Major Complications: The original version misidentified ~10% of pieces. This was due to different lighting conditions changing RGB values heavily. To solve this we changed from RGB to HSV, taking median pixel values over each hole, and taking the most common reading over several frames, which brought errors close to zero. </p></section>
+
+<section><h2>What I'd change</h2>
+<p>The entire box made the project compact and reliable, however was quite bulky especially when placed on a table. The height of the board requires standing to play. Preferably, if you could either add more cameras to lower the height of the board, or choose an overhead camera design with piece recognition. Mechanically, the arm has a slight tilt which could be made more rigid with design improvements. </p></section>
+
+<p class="nextwrap"><button type="button" class="next" data-go="ftc">Next project: FTC robot</button></p></main>
+<main class="panel" id="ftc" role="tabpanel" aria-labelledby="t-ftc" hidden><div class="hero" style="padding-top:30px"><div class="two">
+<div><h1>FTC robot</h1>
+<p class="lead">Our team's robot for the 2025-26 season: Decode. As vice president, I played major roles in managing, building, and programming the robot. </p>
+<dl class="facts" style="grid-template-columns:1fr 1fr;margin-top:18px">
+<div><dt>Team</dt><dd>FTC Team 8380</dd></div>
+<div><dt>My role</dt><dd>Vice President; shooter and transfer CAD; autonomous routines</dd></div>
+<div><dt>Season</dt><dd>2025-2026 Season: Decode</dd></div>
+<div><dt>Result</dt><dd>Picked in alliance selection; did not qualify for state</dd></div></dl></div>
+<figure style="margin:0"><img src="images/ftc-robot.jpg" alt="An earlier version of the FTC robot on a table"><figcaption> An earlier version of the robot; the final version differs slightly.</figcaption></figure></div></div>
+
+<section><h2>My role</h2>
+<p>I managed and divided the team upon different parts and subsystems. My larger initiative for this season was a full CAD design to test integration, tolerances, and proof of concept. </p>
+<ul class="role">
+<li><b>Whole-robot CAD.</b> The first year the entire robot was modeled before it was built. Allowed for multiple iterations and testing.</li>
+<li><b>Shooter and transfer.</b> I helped model and lead both; they are shown below.</li>
+<li><b>Autonomous.</b> Although not technically responsible for software, my FRC autonomous knowledge was integral to competative autonomous routines.</li>
+</ul></section>
+
+
+<section><h2>How the robot works</h2>
+<p>A faster geared up rubber band intake pulls in balls. The transfer stores up to 3 balls inside the robot. A servo gate prevents the intook balls from being prematurly shot before the shooter is up to speed. A hooded shooter controlled by speed allows, the balls to be shot different distances, while creating spin creating consistant trajectories. </p>
+<div class="three">
+<figure><img src="images/ftc-cad.png" alt="Full robot CAD with mecanum wheels, shooter and a green ball"><figcaption>Full robot in CAD.</figcaption></figure>
+<figure><img src="images/ftc-shooter.png" alt="CAD of the shooter housing with a flywheel and motor"><figcaption>Shooter: flywheel and motor in a two-plate housing including the servo gate.</figcaption></figure>
+<figure><img src="images/ftc-transfer.png" alt="CAD of the transfer with roller shafts, sprockets and a ramp"><figcaption>Transfer: sprocketed roller shafts over a ramp.</figcaption></figure></div></section>
+
+
+
+<section><h2>Skills I developed and lessons I learned</h2>
+<p>skills</p>
+<ul class="role">
+<li><b>CAD modeling proficiency</b>, modeled complex moving systems with custom parts</li>
+<li><b>simplicity and robustness in design</b> Less moving parts and high stress contacts create smooth and reliable operation</li>
+<li><b>Modular design.</b> Subsystems were made to fit onto the base with minimal attachment points without interfering with each other.</li>
+</li>
+</ul>
+<p>Designing in CAD first meant fit problems showed up on the screen instead of during the build. Doing full CAD also made it easier for for subteams to work together on system integration, making sure subsytems worked well together.</p>
+<p>It was also important to design for driving and real use case. For example, the servo gate allowed better control of the balls through the system, allowing rapid shooting of all 3 stored balls. </p></section>
+
+
+<section><h2>Autonomous routine</h2>
+<div class="two vid"><figure style="margin:0"><video controls playsinline preload="metadata" poster="images/ftc-poster.jpg"><source src="images/ftc-auto.mp4" type="video/mp4"></video><figcaption>Match clip cropped to the field. Our robot is the tan one with the 8380 plate, shooting into the hub.</figcaption></figure>
+<div><p>I helped design and test these autonomous pathing routines. The robot reliably scores the 3 balls it starts with along with all 9 other preplaced balls on the field. Its median performace scores 11 balls. </p></div></div></section><p class="nextwrap"><button type="button" class="next" data-go="frc">Next project: FRC robot</button></p></main>
+
+
+
+<main class="panel" id="frc" role="tabpanel" aria-labelledby="t-frc" hidden><div class="hero" style="padding-top:30px"><h1>FRC robot</h1>
+<p class="lead">I led the software team on FRC Team 5474. This years robot, Serberus competed in the 2026 FIRST Robotics Competition: Rebuilt. </p>
+<figure style="margin:18px 0 0"><img src="images/frc-robot.jpg" alt="The FRC robot with team number 5474 on a practice field surrounded by yellow balls"><figcaption>The robot on another teams practice field. </figcaption></figure>
+<dl class="facts">
+<div><dt>Team</dt><dd>FRC Team 5474</dd></div>
+<div><dt>My role</dt><dd>Head of Programming; led the software team</dd></div>
+<div><dt>Season</dt><dd>First Robotics Competition: 2026: Rebuilt</dd></div>
+<div><dt>Result</dt><dd>Made playoffs in both regional events, placed 12 overall in qualifications at state, fourth in playoffs. Barely missed advancing to World's. Teams first ever state championship appearance.</dd></div></dl></div>
+
+<section><h2>My role</h2>
+<p>I led the software team and divided the work among the students. Each member owned their own subsystems assigned based on experience. Made sure to help others learn rather than bridging their gap in knowledge. </p>
+</section>
+
+<section><h2>Skills I gathered and lessons I learned</h2>
+<p>Compared with the team knowledge before I joined, these are the main things I progressed:</p>
+<ul class="role">
+<li><b>Physics-based feedforward and feedback improvements</b>, along with inverse kinematics and physics calculations for robot control.</li>
+<li><b>Sensor fusion for localization</b>, combining the drivetrain, IMU, and camera measurements.</li>
+<li><b>Autonomous planning and scoring. </b>, with variable and adaptive autonmous routines</li>
+<li><b>Semi-autonomy during teleop</b>, with an intuitive interface between the driver and the robot.</li>
+<li><b>Tracking of power usage and error logs</b>, new this year.</li></ul>
+<p>What mattered most was learnign new tools to help debug. The more data was gathered, the better it was to understand robot performance along with insights on how code can improve. </p>
+<p>Secondly, it was important for each member to be valued, giving everyone somethign they could say they programmed/owned. </p></section>
+
+<section><h2>Robot code structure</h2>
+<div class="two"><figure style="margin:0"><img src="images/frc-tree.png" alt="Project file tree showing Commands, Constants, subsystems and top-level Java files"><figcaption>Project layout.</figcaption></figure>
+<div><p>The code is a command-based structure. Each subsytem runs inedpendantly of eachother and are created and used in a larger "RobotContainer." Commands can pull subsystems together to perform more complex tasks. No subsystem waits for another; if one needs data from another a subsytems can publish data and get data supplied from this publishing. This structure allows the system to be robust, overcome runtime errors, and work even if small parts fail. </p></div></div></section>
+
+<section><h2>Aiming while driving</h2>
+<p> Coded routines to simulataniously aim 2 seperate turrets anywhere on the field with any robot speed. This required, knowing where the robot is based on cameras and odometry, tracking robot speed using drivetrain feedback, characterizing robot's turrets to match real world physics. With all of this information, a iterative newton solve is used to make adjustments to the aiming system to account for thes changing factors. </p>
+<figure><img src="images/frc-aim.png" alt="Code comment for the aimAtTarget method describing turret and shooter control with iterative correction"><figcaption>The overall aiming method.</figcaption></figure>
+<figure><img src="images/frc-adjust.png" alt="Code comment for the adjustFromNaive method describing one iteration of velocity correction"><figcaption>One correction step in the newton solve.</figcaption></figure></section>
+
+<section><h2>Vision and localization</h2>
+<p>2 seperate coproccessors run 4 cameras total to find and track Charuco markers for field localization. This data is filtered and added with a confidence based on standard deviations of vision measurements. A Kalman filter then combines IMU, odometry, and vision data weighted by standard deviations of feedback measurements to provide a robust estimate of the robot's position . </p>
+<figure><img src="images/frc-vision-code.png" alt="Code that adds vision measurements with standard deviations"><figcaption>Vision measurements added with standard deviations.</figcaption></figure>
+<div class="pair wide">
+<figure style="margin:0"><img src="images/frc-vision-tag.png" alt="Camera image with an AprilTag outlined, its corners marked and its axes drawn"><figcaption>AprilTag detection: the tag's corners are marked and its axes drawn, which gives the robot's position relative to the tag. Used Photonvision framework for tag detection pipelines. </figcaption></figure>
+<figure style="margin:0"><img src="images/frc-vision-3d.png" alt="3D view of a camera with and a relative position of a seen tag"><figcaption>A 3D rendering showing seen tags relative locations. </figcaption></figure>
+</div></section>
+
+<section><h2>Autonomous routine</h2>
+<div class="avid"><figure><video controls playsinline preload="metadata" poster="images/frc-auto-poster.jpg"><source src="images/frc-auto.mp4" type="video/mp4"></video><figcaption>Autonomous period at a match. Earlier match before aiming was further tuned. Performed 2 pickups of balls and scored 2 hoppers for roughly 35 total balls. </figcaption></figure>
+<figure><img src="images/frc-auto-plan.png" alt="Field view with planned autonomous paths and waypoints"><figcaption>A planned autonomous path using Pathplanner Library. </figcaption></figure></div>
+<p style="margin-top:18px"> I implimented the autonomous routines this season, stiching robot commands into autonomous pathing, testing tolerances, optimizing behaviors, and tuning reactions based on vision and odometry data. This was done without a field test field; required other teams test fields and adjustements during competition.</p></section>
+
+<section><h2>What I'd change</h2><p>Many problems with software, camera reliability, and sensors was the lack of error tracking. For examample, one major issue was the coprocessors restarting during system brownouts. This was not figured out until later, to which we added a battery as a buffer. Going forward, larger tracking, such as power monitoring, can make diagnosing such symptoms much easier. Otherwise, the aiming on the move was done through adjusting flywheel speed. If the robot had adjustable hoods, greater accuracy and speed could be established due to requiring less time to adjust. </p></section><p class="nextwrap"><button type="button" class="next" data-go="more">Next project: COSMOS &amp; more</button></p></main>
+
+
+<main class="panel" id="more" role="tabpanel" aria-labelledby="t-more" hidden><div class="hero" style="padding-top:30px"><h1>COSMOS: autonomous RC car</h1>
+<p class="lead">At UCSD COSMOS my team built a small RC car that used various sensors and methods to see the world and ultimetely drive around a track and avoid obstacles.</p>
+<dl class="facts">
+<div><dt>Program</dt><dd>UC San Diego COSMOS, Cluster 11: Autonomous Robotics, summer 2025</dd></div>
+<div><dt>Team</dt><dd>A Team of 4 High School Juniors</dd></div>
+<div><dt>My role</dt><dd>Designed and integrated components on a small RC car along with developing algorithms to integrate Deep learning, lane detection, object recognition, and LIDAR</dd></div>
+</dl>
+<div class="pair" style="margin-top:20px">
+<figure style="margin:0"><img src="images/cosmos-top.jpg" alt="Top view of the RC car with an onboard computer under a cooling fan, a green camera mount, batteries and wiring"><figcaption>Top view: onboard computer(NVIDIA Jetson Nano) under the cooling fan, batteries, wiring, and the green camera mount at the front with LIDAR sensor underneath. </figure>
+<figure style="margin:0"><img src="images/cosmos-side.jpg" alt="Side view of the RC car showing the camera on a green mount and the LiDAR near the front"><figcaption>Side view: camera on its green mount, with the LiDAR beside it. </figcaption></figure></div></div>
+
+<section><h2>What it does and what I learned</h2>
+<p>The car successfully ran laps around a empty track using deep learning or classic CV lane detection. It also identified objects using object recognition pipelines or LIDAR. The final demo used a fusion approach between classic CV lane detection and LiDAR data to run around the track while avoiding cones. </p>
+<ul class="role">
+<li><b>Linux and terminal usage.</b></li>
+<li><b>Multiple perception methods:</b> deep learning on camera images, classical computer vision for lane tracking, Object recognition pipelines, and LiDAR for further object detection.</li>
+<li><b>Hardware integration.</b> I designed mounting plates, camera stands, and casing for all of the electroncis. Helped wire together electronic components.</li></ul></section>
+
+<section><h2>Lane detection and demo videos</h2>
+<div class="two so"><figure style="margin:0"><img src="images/cosmos-lane-mask.png" alt="Black image showing only the yellow dashed lane markings, isolated from the camera view"><figcaption>A filtered camera image for a classic CV lane detection approach. </figcaption></figure>
+<div><p><b>Watch it run (YouTube)</b></p>
+<ul class="links">
+<li><a href="https://www.youtube.com/watch?v=5nrzRB-NIH4&amp;t=1s" target="_blank" rel="noopener noreferrer">Final Demo Video</a></li>
+<li><a href="https://youtu.be/fDQK9VSev3E" target="_blank" rel="noopener noreferrer">Testing Computer Vision and Lane Detection</a></li>
+<li><a href="https://youtu.be/PWahnGGJ2zs" target="_blank" rel="noopener noreferrer">Deep Learning</a></li></ul>
+<p class="cap"></p></div></div></section>
+
+<section><h2>Science Olympiad: air trajectory</h2>
+<div class="two so"><div>
+<p>A partner and I built a ping-pong-ball cannon for the Air Trajectory event and placed 2nd at regionals. The farthest target distance was 8.00 meters. After many improvments in height, angle, proper sealing, we never reached this 8.00 meters. Due to time constraints we stopped chasing this distance and decided to focus on proper calibration data doing multiple tries on every drop height gathering extensive data. When the far target was in fact 8.00 meters at comp, we thought we had lost. However, for the close target we hit within 5 cm helping us win 2nd place. </p>
+<p>I also placed 5th in Geologic Mapping and 10th in Material Sciences at regionals.</p>
+</div>
+<figure style="margin:0"><img src="images/airtraj-cannon.jpg" alt="The air trajectory cannon: an angled black launch tube next to a vertical black pipe, mounted on a wooden base, with a ping-pong ball beside it"><figcaption>The cannon: an angled barrel and a vertical pipe on a wooden base. A weight is dropped from various heights shooting the ball various distances. </figcaption></figure></div></section></main>
+<footer>Kai · Mechanical Engineering w. specialization in Robotics &amp; Control Systems, UC San Diego Regents Scholar</footer>
+</div>
+<script>
+(function(){document.documentElement.classList.add('js');
+var tabs=[].slice.call(document.querySelectorAll('[role=tab]')),panels=[].slice.call(document.querySelectorAll('.panel'));
+function show(id,user){if(!panels.some(function(p){return p.id===id}))id=panels[0].id;
+panels.forEach(function(p){p.hidden=p.id!==id});
+tabs.forEach(function(t){var on=t.dataset.tab===id;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1});
+if(user){try{history.replaceState(null,'','#'+id)}catch(e){}window.scrollTo(0,0)}}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){show(t.dataset.tab,true)});
+t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();show(n.dataset.tab,true);e.preventDefault()})});
+[].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.addEventListener('click',function(){show(b.dataset.go,true)})});
+window.addEventListener('hashchange',function(){show(location.hash.slice(1),false)});
+show(location.hash.slice(1),false)})();
+</script>
+</body></html>

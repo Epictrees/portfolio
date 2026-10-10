@@ -58,10 +58,20 @@ a{color:var(--acc)}footer{padding:40px 0 60px;color:var(--mute);border-top:1px s
 @media(max-width:480px){.tabs button{font-size:.88rem;padding:6px 4px}}
 .links{list-style:none;padding:0;margin:0 0 6px}.links a{display:block;padding:12px 16px;margin:0 0 10px;border:2px solid var(--fg);border-radius:4px;color:var(--fg);background:var(--card);text-decoration:none;font-weight:700}.links a:hover{background:var(--line)}.links a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .pair.wide img{aspect-ratio:3/2}
-</style></head><body>
+.prow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:28px;align-items:start;margin:0 0 28px}
+@media(max-width:700px){.prow{grid-template-columns:1fr}}
+.pat h3{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-size:1.3rem;line-height:1.2;margin:28px 0 .6em}
+.prow figure{margin:0}
+.prow figure img{aspect-ratio:16/9;object-fit:cover}
+.embed{position:relative;aspect-ratio:16/9;width:100%;background:var(--card);border-radius:4px;overflow:hidden}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+</style></head>
+
+
+<body>
 <div class="wrap">
 <header class="top">Kai · Mechanical Engineering w. specialization in Robotics &amp; Control Systems, UC San Diego Regents Scholar</header>
-<nav class="tabs" role="tablist" aria-label="Projects"><button type="button" role="tab" id="t-chess" aria-controls="chess" data-tab="chess" aria-selected="true">Chess robot</button><button type="button" role="tab" id="t-ftc" aria-controls="ftc" data-tab="ftc" aria-selected="false">FTC robot</button><button type="button" role="tab" id="t-frc" aria-controls="frc" data-tab="frc" aria-selected="false">FRC robot</button><button type="button" role="tab" id="t-more" aria-controls="more" data-tab="more" aria-selected="false">COSMOS &amp; more</button></nav>
+<nav class="tabs" role="tablist" aria-label="Projects"><button type="button" role="tab" id="t-chess" aria-controls="chess" data-tab="chess" aria-selected="true">Chess robot</button><button type="button" role="tab" id="t-ftc" aria-controls="ftc" data-tab="ftc" aria-selected="false">FTC robot</button><button type="button" role="tab" id="t-frc" aria-controls="frc" data-tab="frc" aria-selected="false">FRC robot</button><button type="button" role="tab" id="t-more" aria-controls="more" data-tab="more" aria-selected="false">Patent &amp; more</button></nav>
 <main class="panel" id="chess" role="tabpanel" aria-labelledby="t-chess"><div class="hero" style="padding-top:36px">
 <h1>Chess robot</h1>
 <p class="lead">A SCARA-style arm that moves chess pieces on a physical board, with a camera that reads the board from underneath so a player's hand never blocks the view.</p>
@@ -209,26 +219,53 @@ YELLOW PIECES ON:
 <figure><img src="images/frc-auto-plan.png" alt="Field view with planned autonomous paths and waypoints"><figcaption>A planned autonomous path using Pathplanner Library. </figcaption></figure></div>
 <p style="margin-top:18px"> I implimented the autonomous routines this season, stiching robot commands into autonomous pathing, testing tolerances, optimizing behaviors, and tuning reactions based on vision and odometry data. This was done without a field test field; required other teams test fields and adjustements during competition.</p></section>
 
-<section><h2>What I'd change</h2><p>Many problems with software, camera reliability, and sensors was the lack of error tracking. For examample, one major issue was the coprocessors restarting during system brownouts. This was not figured out until later, to which we added a battery as a buffer. Going forward, larger tracking, such as power monitoring, can make diagnosing such symptoms much easier. Otherwise, the aiming on the move was done through adjusting flywheel speed. If the robot had adjustable hoods, greater accuracy and speed could be established due to requiring less time to adjust. </p></section><p class="nextwrap"><button type="button" class="next" data-go="more">Next project: COSMOS &amp; more</button></p></main>
+<section><h2>What I'd change</h2><p>Many problems with software, camera reliability, and sensors was the lack of error tracking. For examample, one major issue was the coprocessors restarting during system brownouts. This was not figured out until later, to which we added a battery as a buffer. Going forward, larger tracking, such as power monitoring, can make diagnosing such symptoms much easier. Otherwise, the aiming on the move was done through adjusting flywheel speed. If the robot had adjustable hoods, greater accuracy and speed could be established due to requiring less time to adjust. </p></section><p class="nextwrap"><button type="button" class="next" data-go="more">Next project: Patent &amp; more</button></p></main>
 
+<main class="panel" id="more" role="tabpanel" aria-labelledby="t-more" hidden>
+<section id="patent" class="pat" style="border-top:0;margin-top:0;padding-top:30px"><h2>Self-righting multi-hull vessel (patent application)</h2>
+<div class="hero"><p class="lead">As an intern at Neptune Dynamix, I co-invented a passively self-righting multi-hull vessel, now filed as an international patent application.</p>
+<dl class="facts">
+<div><dt>Company</dt><dd>Neptune Dynamix</dd></div>
+<div><dt>My role</dt><dd>Intern and co-inventor, summer of 2025 </dd></div>
+<div><dt>Status</dt><dd>Provisional patent application (2025), then international (PCT) application (2026)</dd></div></dl></div>
 
-<main class="panel" id="more" role="tabpanel" aria-labelledby="t-more" hidden><div class="hero" style="padding-top:30px"><h1>COSMOS: autonomous RC car</h1>
-<p class="lead">At UCSD COSMOS my team built a small RC car that used various sensors and methods to see the world and ultimetely drive around a track and avoid obstacles.</p>
+<h3>The invention</h3>
+<div class="prow"><div>
+<p>A passively self-righting multi-hull vessel: a catamaran-style boat that passively rights itself after capsizing, without motors or controls.</p>
+<p>The first testing and prototypes were build using small models. Current custom physics simulation proves viability and adaptability. Current first prototype at full-scale being tested. The idea is that the weights and buoyancy elements on the boat always keep it at an unstable position regardless of angle the boat is currently at. The only stable position is when the boat is upright. </p></div>
+<figure><img src="images/boat.jpg" alt="The first built prototype on the water, with a large solar array on a camouflage-blue hull"><figcaption>The first built prototype on the water.</figcaption></figure></div>
+
+<h3>The problem it solves</h3>
+<div class="prow"><div>
+<p> Most of my robotics work has been in controlled environments, where I could measure what was happening and correct for it with sensors and code. This design pushed me the other way: the water is unpredictable, so instead of sensing and correcting for uncertainty, the boat had to be built to handle it on its own, with no motors or controls to fail.
+</p>
+
+</div>
+<figure><div class="embed"><iframe src="https://www.youtube.com/embed/fv6M8L2Rx7Y?si=MLgVcdYTNFDD7-l8" title="Video of the self-righting vessel design" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Video of the design. <a href="https://www.youtube.com/watch?v=fv6M8L2Rx7Y" target="_blank" rel="noopener noreferrer">Watch on YouTube</a> if the player does not load.</figcaption></figure></div>
+
+<h3>What I learned</h3>
+<div class="prow"><div>
+<p> Compared to much of my experience in robotics, most of my situations have been controlled environments. This design specifically challenged me to think about dealing with uncertainty and passively dealing with it rather than manipulating it. </p>
+
+</div></section>
+
+<section><h2>COSMOS: autonomous RC car</h2>
+<div class="hero"><p class="lead">At UCSD COSMOS my team built a small RC car that used various sensors and methods to see the world and ultimately drive around a track and avoid obstacles.</p>
 <dl class="facts">
 <div><dt>Program</dt><dd>UC San Diego COSMOS, Cluster 11: Autonomous Robotics, summer 2025</dd></div>
 <div><dt>Team</dt><dd>A Team of 4 High School Juniors</dd></div>
 <div><dt>My role</dt><dd>Designed and integrated components on a small RC car along with developing algorithms to integrate Deep learning, lane detection, object recognition, and LIDAR</dd></div>
 </dl>
 <div class="pair" style="margin-top:20px">
-<figure style="margin:0"><img src="images/cosmos-top.jpg" alt="Top view of the RC car with an onboard computer under a cooling fan, a green camera mount, batteries and wiring"><figcaption>Top view: onboard computer(NVIDIA Jetson Nano) under the cooling fan, batteries, wiring, and the green camera mount at the front with LIDAR sensor underneath. </figure>
-<figure style="margin:0"><img src="images/cosmos-side.jpg" alt="Side view of the RC car showing the camera on a green mount and the LiDAR near the front"><figcaption>Side view: camera on its green mount, with the LiDAR beside it. </figcaption></figure></div></div>
+<figure style="margin:0"><img src="images/cosmos-top.jpg" alt="Top view of the RC car with an onboard computer under a cooling fan, a green camera mount, batteries and wiring"><figcaption>Top view: onboard computer(NVIDIA Jetson Nano) under the cooling fan, batteries, wiring, and the green camera mount at the front with LIDAR sensor underneath.  </figcaption></figure>
+<figure style="margin:0"><img src="images/cosmos-side.jpg" alt="Side view of the RC car showing the camera on a green mount and the LiDAR near the front"><figcaption>Side view: camera on its green mount, with the LiDAR beside it. </figcaption></figure></div></div></section>
 
 <section><h2>What it does and what I learned</h2>
-<p>The car successfully ran laps around a empty track using deep learning or classic CV lane detection. It also identified objects using object recognition pipelines or LIDAR. The final demo used a fusion approach between classic CV lane detection and LiDAR data to run around the track while avoiding cones. </p>
+<p>The car successfully ran laps around an empty track using deep learning or classic CV lane detection. It also identified objects using object recognition pipelines or LIDAR. The final demo used a fusion approach between classic CV lane detection and LiDAR data to run around the track while avoiding cones. </p>
 <ul class="role">
 <li><b>Linux and terminal usage.</b></li>
 <li><b>Multiple perception methods:</b> deep learning on camera images, classical computer vision for lane tracking, Object recognition pipelines, and LiDAR for further object detection.</li>
-<li><b>Hardware integration.</b> I designed mounting plates, camera stands, and casing for all of the electroncis. Helped wire together electronic components.</li></ul></section>
+<li><b>Hardware integration.</b> I designed mounting plates, camera stands, and casing for all of the electronics. Helped wire together electronic components.</li></ul></section>
 
 <section><h2>Lane detection and demo videos</h2>
 <div class="two so"><figure style="margin:0"><img src="images/cosmos-lane-mask.png" alt="Black image showing only the yellow dashed lane markings, isolated from the camera view"><figcaption>A filtered camera image for a classic CV lane detection approach. </figcaption></figure>
@@ -241,7 +278,7 @@ YELLOW PIECES ON:
 
 <section><h2>Science Olympiad: air trajectory</h2>
 <div class="two so"><div>
-<p>A partner and I built a ping-pong-ball cannon for the Air Trajectory event and placed 2nd at regionals. The farthest target distance was 8.00 meters. After many improvments in height, angle, proper sealing, we never reached this 8.00 meters. Due to time constraints we stopped chasing this distance and decided to focus on proper calibration data doing multiple tries on every drop height gathering extensive data. When the far target was in fact 8.00 meters at comp, we thought we had lost. However, for the close target we hit within 5 cm helping us win 2nd place. </p>
+<p>A partner and I built a ping-pong-ball cannon for the Air Trajectory event and placed 2nd at regionals. The farthest target distance was 8.00 meters. After many improvements in height, angle, proper sealing, we never reached this 8.00 meters. Due to time constraints we stopped chasing this distance and decided to focus on proper calibration data doing multiple tries on every drop height gathering extensive data. When the far target was in fact 8.00 meters at comp, we thought we had lost. However, for the close target we hit within 5 cm helping us win 2nd place. </p>
 <p>I also placed 5th in Geologic Mapping and 10th in Material Sciences at regionals.</p>
 </div>
 <figure style="margin:0"><img src="images/airtraj-cannon.jpg" alt="The air trajectory cannon: an angled black launch tube next to a vertical black pipe, mounted on a wooden base, with a ping-pong ball beside it"><figcaption>The cannon: an angled barrel and a vertical pipe on a wooden base. A weight is dropped from various heights shooting the ball various distances. </figcaption></figure></div></section></main>
